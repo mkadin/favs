@@ -5,5 +5,5 @@
     RewriteEngine On
     #RewriteBase web/
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ web/index.php [L]
+    RewriteRule ^ app/index.php [L]
 </IfModule>
