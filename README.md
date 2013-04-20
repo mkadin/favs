@@ -22,3 +22,6 @@ Installation
 key.
 
 3) Import the database.sql to set up the table structure.
+
+4) Install Silex.  The easiest way to set this up is with composer.
+(http://silex.sensiolabs.org/download)
