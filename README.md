@@ -10,7 +10,7 @@ Also integrates with the Google Maps API (v3).
 
 Reviewing this Code?
 ====================
-If you're reviewing this application, the majority of the code written is...
+If you're reviewing this application, the majority of the code I wrote is...
   -In the app/ directory. These PHP files represent the Silex-based RESTful API.
   -The js/app.js file.  This file contains all of the application's custom JS.
 
