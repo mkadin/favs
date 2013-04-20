@@ -187,7 +187,6 @@ $(function () {
     initialize: function () {
       // Register listeners on the collection.
       this.listenTo(favorites, 'add', this.addOne);
-      this.listenTo(favorites, 'reset', this.addAll);
       this.listenTo(favorites, 'remove', this.addEmptyText);
       
       // Fetch the full list of favorites.
@@ -239,10 +238,6 @@ $(function () {
 
       this.removeEmptyText();
       return view;
-    },
-    
-    addAll: function () {
-      favorites.each(this.addOne, this);
     },
     
     removeEmptyText: function () {
