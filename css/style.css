@@ -47,6 +47,15 @@ h3.heading {
   margin-bottom:5px;
 }
 
+#instructions {
+  font-size:.8em;
+  font-style:italic;
+  color:#999;
+  margin-top: 10px;
+  margin-right: 5px;
+  float:right;
+}
+
 /** New Favorite Form **/
 #favorite-new-form {
   border:3px solid black;
