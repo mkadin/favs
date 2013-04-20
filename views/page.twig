@@ -3,14 +3,24 @@
   <head>
     <title>My Favorite Locations!</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Javascript -->
+    
+    <!-- Google Maps JS -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ gmaps_api_key }}&sensor=false"></script>
+    
+    <!-- Backbone Requirements -->
     <script type="text/javascript" src="js/json2.js"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/underscore.min.js"></script>
+    
+    <!-- Backbone -->
     <script type="text/javascript" src="js/backbone.js"></script>
+    
+    <!-- Smoke, Easy Alert Popups -->
     <script type="text/javascript" src="js/smoke.js"></script>
+    
+    <!-- Main Application Javascript -->
     <script type="text/javascript" src="js/app.js"></script>
+    
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/960.css" type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" /> 
@@ -57,6 +67,7 @@
         </div>
       </div>
     </div>
+    <!-- Underscore Template for a Favorite -->
     <script id="favorite-template" type="text/template">
       <div class="favorite">
         <div class="favorite-name"><%- name %></div>
