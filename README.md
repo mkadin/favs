@@ -15,5 +15,4 @@ Installation
 2) Edit the new config.php with your database credentials and Google Maps API
 key.
 
-3) Import the database.sql for some example database data and the database's
-structure.
+3) Import the database.sql to set up the table structure.
