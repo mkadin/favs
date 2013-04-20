@@ -6,6 +6,6 @@ use Silex\Application;
 
 function frontPage(Application $app) {
   return $app['twig']->render('page.twig', array(
-    'title' => 'My Favorite Locations',
+    'title' => 'Favorite Locations!',
   ));
 }

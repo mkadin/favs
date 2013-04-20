@@ -4,11 +4,17 @@
     <title>My Favorite Locations!</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Javascript -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ gmaps_api_key }}&sensor=false"></script>
+    <script type="text/javascript" src="js/json2.js"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
-
+    <script type="text/javascript" src="js/underscore.min.js"></script>
+    <script type="text/javascript" src="js/backbone.js"></script>
+    <script type="text/javascript" src="js/smoke.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/960.css" type="text/css" />
-    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" /> 
+    <link rel="stylesheet" href="css/smoke.css" type="text/css" /> 
   </head>
 
   <body>
@@ -19,13 +25,55 @@
         </div>
       </div>
       <div id="content" class="container_12">
-        <div id="map-wrapper" class="grid_6">
-
+        <div class="grid_6">
+          <div id="map-wrapper">
+            <div id="map"></div>
+          </div>
+          <br />
         </div>
-        <div id="list-wrapper" class="grid_6">
-        
+        <div id="right-column" class="grid_6">
+          <h3 class="heading">Add a New Location</h3>
+          <div id="favorite-new-form">
+            <div id="favorite-new-form-fields">
+              <div class="favorite-new-input favorite-new-name-input">
+                <label>Name:</label>
+                <input type="text" class="new-text-element" />
+              </div>
+              <div class="favorite-new-input favorite-new-address-input">
+                <label>Address:</label>
+                <input type="text" class="new-text-element" />
+              </div>
+            </div>
+            <div class="favorite-new-actions">
+              <a href="#" class="button-link favorite-add">Add</a>
+            </div>
+          </div>
+          <h3 class="heading">My Favorites</h3>
+          <div id="list-wrapper">
+            <div id="empty-text-wrapper">
+              You don't have any favorite locations yet.  Add one!
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    <script id="favorite-template" type="text/template">
+      <div class="favorite">
+        <div class="favorite-name"><%- name %></div>
+        <div class="favorite-input favorite-name-input">
+          <label>Name:</label>
+          <input type="text" value="<%- name %>" />
+        </div>
+        <div class="favorite-address"><%- address %></div>
+        <div class="favorite-input favorite-address-input">
+          <label>Address:</label>
+          <input type="text" value="<%- address %>" />
+        </div>
+        <div class="favorite-actions">
+          <a href="#" class="button-link favorite-save">Save</a>
+          <a href="#" class="button-link favorite-delete">Delete</a>
+        </div>
+      </div>
+    </script>
   </body>
 </html>
