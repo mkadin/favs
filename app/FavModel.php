@@ -158,7 +158,7 @@ class FavModel {
    * Delete this favorite.
    */
   function delete() {
-    if ($id) {
+    if ($this->id) {
       // Execute the delete query.
       $statement = $this->db->prepare('DELETE FROM favs WHERE id = :id');
       $statement->execute(array(':id' => $this->get('id')));
