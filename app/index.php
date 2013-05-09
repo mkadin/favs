@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ .'/FrontPage.php';
 require_once __DIR__ .'/FavController.php';
+require_once __DIR__ .'/FavModel.php';
 $app = new Silex\Application();
 
 

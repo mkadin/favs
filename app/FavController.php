@@ -25,21 +25,14 @@ class FavController {
       $app->abort(400, 'The name, lat, lon, and address fields are all required.');
     }
 
-    // Pull up the db service and save the new favorite.
-    $db = $app['db'];
+    
+    $model = new FavModel($app['db']);
 
-    // Insert the new data.
-    $statement = $db->prepare('INSERT INTO favs (name, lat, lon, address) VALUES (:name, :lat, :lon, :address)');
-    $statement->execute(array(
-      ':name' => $data['name'],
-      ':lat' => $data['lat'],
-      ':lon' => $data['lon'],
-      ':address' => $data['address'],
-    ));
+    $model->setMultiple($data);
 
-    // Get the new ID and return the data as JSON.
-    $data['id'] = $db->lastInsertId();
-    return $app->json($data, 201);
+    $model->save();
+    
+    return $app->json($model->getAll(), 201);
   }
 
   /**
@@ -67,14 +60,8 @@ class FavController {
    */
   function read(Application $app, Request $request, $id) {
 
-    // Pull up the db service.
-    $db = $app['db'];
-
-    // Query for the existing favs.
-    $statement = $db->prepare('SELECT * FROM favs WHERE id = :id');
-    $statement->execute(array(':id' => $id));
-    $data = $statement->fetch(PDO::FETCH_ASSOC);
-    if ($data) {
+    $model = new FavModel($app['db'], $id);
+    if (!empty($model->get('id'))) {
       return $app->json($data, 200);
     }
     else {
@@ -101,30 +88,13 @@ class FavController {
       $app->abort(400, 'One of name, lat, lon, and address is required.');
     }
 
-    // Pull up the db service.
-    $db = $app['db'];
-
-    // Prepare the SQL.
-    $sql = 'UPDATE favs SET ';
+    $model = new FavModel($app['db'], $id);
     
-    // Loop through each included field to prepare the piece of the SQL
-    // statement and the array of PDO::execute() placeholders.
-    foreach ($data as $field => $value) {
-      if (!empty($value)) {
-        $updates[] = $field . " = :" . $field;
-        $params[':' . $field] = $value;
-      }
-    }
+    $model->setMultiple($data);
     
-    // Turn the update SQL into a string separated by commas and include the
-    // where clause.
-    $sql .= implode(', ', $updates);
-    $sql .= " WHERE id = :id";
-
-    // Execute the query.
-    $statement = $db->prepare($sql);
-    $statement->execute($params);
-    if ($data) {
+    $model->save();
+    
+    if ($model->get('id')) {
       return new Response(NULL, 200);
     }
   }
@@ -133,13 +103,11 @@ class FavController {
    * Deletes a favorite.
    */
   function delete(Application $app, Request $request, $id) {
-     // Pull up the db service.
-    $db = $app['db'];
+
+    $model = new FavModel($app['db'], $id);
     
-    // Execute the delete query.
-    $statement = $db->prepare('DELETE FROM favs WHERE id = :id');
-    $statement->execute(array(':id' => $id));
-    
+    $model->delete();
+
     // Return an empty response with code 204.
     return new Response(NULL, 204);
   }
