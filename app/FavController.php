@@ -61,7 +61,8 @@ class FavController {
   function read(Application $app, Request $request, $id) {
 
     $model = new FavModel($app['db'], $id);
-    if (!empty($model->get('id'))) {
+    $id = $model->get('id');
+    if (!empty($id)) {
       return $app->json($data, 200);
     }
     else {
