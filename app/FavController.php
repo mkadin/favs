@@ -89,6 +89,8 @@ class FavController {
       $app->abort(400, 'One of name, lat, lon, and address is required.');
     }
 
+    exit('go');
+    
     $model = new FavModel($app['db'], $id);
     
     $model->setMultiple($data);

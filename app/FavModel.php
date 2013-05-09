@@ -137,7 +137,7 @@ class FavModel {
       $sql .= " WHERE id = :id";
 
       // Execute the query.
-      $statement = $db->prepare($sql);
+      $statement = $this->db->prepare($sql);
       $statement->execute($params);
 
       return $this->get('id');
