@@ -40,18 +40,7 @@ class FavController {
    */
   function getList(Application $app, Request $request) {
 
-    // Pull up the db service.
-    $db = $app['db'];
-
-    // Query for the existing favs.
-    $statement = $db->query('SELECT * FROM favs');
-    $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-    
-    // Format the list and output it as JSON.
-    $data = array();
-    foreach ($results as $result) {
-      $data[] = $result;
-    }
+    $data = FavModel::loadAll($app['db']);
     return $app->json($data, 200);
   }
 

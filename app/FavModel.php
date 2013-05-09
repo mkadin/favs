@@ -164,6 +164,24 @@ class FavModel {
       $statement->execute(array(':id' => $this->get('id')));
     }
   }
+  
+  /**
+   * Class method for loading all favorites.
+   */
+  function loadAll($db) {
+
+    // Query for the existing favs.
+    $statement = $db->query('SELECT * FROM favs');
+    $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+    
+    // Format the list and output it as JSON.
+    $data = array();
+    foreach ($results as $result) {
+      $data[] = $result;
+    }
+    
+    return $data;
+  }
 
 }
 
