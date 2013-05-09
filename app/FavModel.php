@@ -111,6 +111,8 @@ class FavModel {
       foreach (array('name', 'lat', 'lon', 'adress') as $property) {
         $placeholders[':' . $property] = $this->get('property');
       }
+      var_export($placeholders);
+      exit();
       $statement->execute($placeholders);
       $this->set('id', $this->db->lastInsertId());
 
