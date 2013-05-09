@@ -109,7 +109,7 @@ class FavModel {
 
       $statement = $this->db->prepare('INSERT INTO favs (name, lat, lon, address) VALUES (:name, :lat, :lon, :address)');
       foreach (array('name', 'lat', 'lon', 'adress') as $property) {
-        $placeholders[':' . $property] = $this->get('property');
+        $placeholders[':' . $property] = $this->get($property);
       }
       var_export($placeholders);
       exit();
